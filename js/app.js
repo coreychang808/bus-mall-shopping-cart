@@ -8,10 +8,14 @@ var Cart = function(items) {
 
 Cart.prototype.addItem = function(product, quantity) {
   // TODO: Fill in this instance method to create a new CartItem and add it to this.items
+  var selectedItem = new CartItem(product, quantity);
+  this.items.push(selectedItem);
 };
 
 Cart.prototype.saveToLocalStorage = function() {
   // TODO: Fill in this instance method to save the contents of the cart to localStorage
+  var cartify = JSON.stringify(this.items);
+  localStorage.setItem('cartify',cartify);
 };
 
 Cart.prototype.removeItem = function(item) {

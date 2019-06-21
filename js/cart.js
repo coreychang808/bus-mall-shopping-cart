@@ -1,6 +1,7 @@
 /* global Cart */
 'use strict';
 
+
 // Create an event listener so that when the delete link is clicked, the removeItemFromCart method is invoked.
 var table = document.getElementById('cart');
 table.addEventListener('click', removeItemFromCart);
@@ -19,12 +20,29 @@ function renderCart() {
 }
 
 // TODO: Remove all of the rows (tr) in the cart table (tbody)
-function clearCart() {}
+function clearCart() {
+  table.removeChild('tbody');
+  var tbody = document.createElement('tbody');
+  table.appendChild(tbody);
+}
 
 // TODO: Fill in the <tr>'s under the <tbody> for each item in the cart
 function showCart() {
-
+  var tbody = document.getElementsByTagName('tbody')[0];
   // TODO: Find the table body
+  for(var i=0; i < cart.items.length; i++){
+    var trow = document.createElement('tr');
+    var tdata = document.createElement('td');
+    tdata.textContent = 'x';
+    trow.appendChild(tdata);
+    tdata = document.createElement('td');
+    tdata.textContent = cart.items[i].quantity;
+    trow.appendChild(tdata);
+    tdata = document.createElement('td');
+    tdata.textContent = cart.items[i].product;
+    trow.appendChild(tdata);
+    tbody.appendChild(trow);
+  }
 
   // TODO: Iterate over the items in the cart
   // TODO: Create a TR
